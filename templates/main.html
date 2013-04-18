@@ -1,0 +1,28 @@
+<div class="container" ng-controller="MainCtrl">
+  <div class="row">
+    <div class="span12">
+      <ul class="breadcrumb">
+        <li><a href="#/greader">Home</a> <span class="divider">/</span></li>
+        <li ng-show="feed"><a href="#/greader/feeds/{{feed.id}}">{{feed.title}}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span2">
+      <ul class="nav nav-list">
+        <li ng-repeat="feed in subscriptions.feeds"><a ng-click="show(feed)">{{feed.title}}</a></li>
+      </ul>
+    </div>
+    <div class="span10">
+      <div class="row" ng-repeat="item in items">
+        <div class="span10">
+          <blockquote ng-click="expandOrCollapse(item)">
+            <a class="brand">{{item.title}}</a>
+            <small>{{item.published|timeago}}</small>
+          </blockquote>
+          <div class="span10 post-content" ng-bind-html-unsafe="item.content.content" ng-show="item._meta.expand">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
